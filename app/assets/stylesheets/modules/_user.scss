@@ -1,0 +1,54 @@
+.login-wrapper{
+  display: flex;
+  .login-left{
+    width: 40%;
+    max-width: 500px;
+    margin-right: 10px;
+    &__image{
+      width: 100%;
+    }
+  }
+  .login-right{
+    width: 60%;
+    .field{
+      margin-bottom: 16px;
+    }
+    .actions{
+      margin-top: 10px;
+      &__login-button{
+        color: #fff;
+        padding: 5px;
+        margin: 10px 0;
+        border-radius: 5px;
+        background-color: #FCADAD;
+        border: none;
+        text-decoration: none;
+        &:hover{
+          cursor: pointer;
+        }
+      }
+      &__signup-button{
+        text-decoration: none;
+        background-color: #CFE6FA;
+        color: #fff;
+        padding: 5px 8px;
+        margin: 30px 0 0 30px;
+        border-radius: 5px;
+        &:hover{
+          cursor: pointer;
+        }
+        &__signup{
+          background-color: #CFE6FA;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          padding: 5px 8px;
+          margin-right: 10px;
+          &:hover{
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

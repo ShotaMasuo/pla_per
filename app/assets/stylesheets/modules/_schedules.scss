@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.main-title{
+  background-color: #CFE6FA;
+  padding: 0 10px;
+  width: 100vw;
+  height: 60px;
+  &__title{
+    font-size: 30px;
+    padding-top: 7px;
+  }
+  &__toplink{
+    color: #FCADAD;
+    text-decoration: none;
+    letter-spacing: 5px;
+  }
+}
