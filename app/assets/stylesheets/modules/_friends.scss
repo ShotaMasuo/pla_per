@@ -1,0 +1,191 @@
+.top-container{
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  .center-buttons{
+    .day-icon{
+      text-decoration: none;
+      margin: 0 3px;
+    }
+  }
+}
+.friends-wrapper{
+  display: flex;
+  height: calc(100vh - 84px);
+  .friends-container{
+    width: 20%;
+    height: 100%;
+    padding: 20px 0 0 20px;
+    &__button{
+      border: none;
+      background-color: #FCADAD;
+      text-decoration: none;
+      color: #fff;
+      padding: 5px;
+      box-shadow: 3px 3px #d3d3d3;
+      border-radius: 5px;
+      &:hover{
+        cursor: pointer;
+      }
+      &:active{
+        position: relative;
+        top: 3px;
+        box-shadow: none;
+      }
+    }
+    .friends-list{
+      margin-top: 10px;
+      &__item{
+        margin-top: 1rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .friend-schedule{
+    width: 80%;
+    height: 95%;
+    margin-top: 15px;
+    .schedule-wrapper{
+      display: flex;
+      height: 100%;
+      &__display{
+        width: 30px;
+        display: grid;
+        grid-template-rows: 1fr 0.5fr 1fr;
+        grid-template-columns: 1fr;
+        .plan{
+          grid-row: 1/2;
+          display: flex;
+          align-items: center;
+        }
+        .done{
+          grid-row: 3/4;
+          display: flex;
+          align-items: center;
+        }
+      }
+      &__plan{
+        width: 100%;
+        display: grid;
+        grid-template-rows: 1fr 0.25fr 1fr;
+        grid-template-columns: repeat(auto-fill, 1.56%);
+        .sample1{
+          // この間の値はhamlに直指定
+          grid-column: 1/4;
+          grid-row: 1/2;
+          background-color: lightblue;
+          // ここまで
+          text-orientation: upright;
+          writing-mode: vertical-rl;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .sample2{
+          grid-column: 5/21;
+          grid-row: 1/2;
+          background-color: lightgreen;
+          text-orientation: upright;
+          writing-mode: vertical-rl;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .sample3{
+          grid-column: 1/5;
+          grid-row: 3/4;
+          background-color: lightblue;
+          text-orientation: upright;
+          writing-mode: vertical-rl;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .sample4{
+          grid-column: 5/13;
+          grid-row: 3/4;
+          background-color: lightgreen;
+          text-orientation: upright;
+          writing-mode: vertical-rl;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      &__hour{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #000;
+      }
+    }
+  }
+}
+
+.addfriend-wrapper{
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 60px);
+  padding: 10px;
+  .search-container{
+    width: 50%;
+    height: 100%;
+    &__new-friends{
+      .search-friend{
+        width: 300px;
+        height: 2rem;
+        font-size: 0.9rem;
+        padding: 0.2rem;
+      }
+      .search-lists{
+        width: 80%;
+        margin-top: 20px;
+        &__list{
+          display: flex;
+          justify-content: space-between;
+          margin: 10px;
+        }
+        .add-button{
+          border: none;
+          background-color: #FCADAD;
+          text-decoration: none;
+          color: #fff;
+          padding: 3px;
+          box-shadow: 3px 3px #d3d3d3;
+          border-radius: 5px;
+          &:hover{
+            cursor: pointer;
+          }
+          &:active{
+            position: relative;
+            top: 3px;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+  .myfriends-container{
+    width: 60%;
+    height: 100%;
+    border-left: lightsteelblue 1px ridge;
+    padding: 0 30px;
+    h3{
+      font-weight: bold;
+      font-size: 30px;
+      color: gray;
+      padding-bottom: 10px;
+    }
+    .friend{
+      display: flex;
+      justify-content: space-between;
+      &__del{
+        .del-button{
+          text-decoration: none;
+          color: gray;
+        }
+      }
+    }
+  }
+}

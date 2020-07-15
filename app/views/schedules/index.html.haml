@@ -1,1 +1,39 @@
-= link_to "ログアウト", destroy_user_session_path, method: :delete
+.container
+  .form-field
+    =form_with model: @schedule, local: true do |f|
+      = f.text_field :name, placeholder: "スケジュール名を入力してください。"
+      -# != sprintf(f.date_select(:sche_day, default: Time.now, discard_year:true, use_month_numbers:true, date_separator: '%s'),'月')+'日'
+      = f.time_select :start_time, default: Time.now, minute_step: 15
+      %span 〜
+      = f.time_select :start_time, default: Time.now + 3600, minute_step: 15
+      = f.submit "登録", class: "add-schedule blue-button"
+  .button-container
+    .left-buttons
+      = link_to "#", class: "left-buttons__left pink-button" do
+        csv出力
+      = link_to friends_path, class: "left-buttons__right blue-button" do
+        仲間たち
+    .center-buttons
+      = link_to "#", class: "day-icon" do
+        = icon('fas', 'chevron-left')
+      = Date.today
+      = link_to "#", class: "day-icon" do
+        = icon('fas', 'chevron-right')
+    .right-buttons
+      = link_to destroy_user_session_path, method: :delete, class: "pink-button" do
+        ログアウト
+  
+  .schedule-wrapper
+    .schedule-wrapper__display
+      %p.plan 予定
+      %p.done 実績
+    .schedule-wrapper__plan
+      .sample1
+        = link_to edit_schedule_path(1) do
+          ミーティングaaaAAAあああ
+      .sample2 資料作成
+      - 16.times do |i|
+        %span.schedule-wrapper__hour{style: "grid-column: #{i*4+1} / #{i*4+5}; grid-row: 2/3;"}
+          = i+6
+      .sample3 ミーティングaaaAAAあああ
+      .sample4 資料作成

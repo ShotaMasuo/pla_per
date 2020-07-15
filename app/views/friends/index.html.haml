@@ -1,0 +1,33 @@
+.top-container
+  .center-buttons
+    = link_to "#", class: "day-icon" do
+      = icon('fas', 'chevron-left')
+    = Date.today
+    = link_to "#", class: "day-icon" do
+      = icon('fas', 'chevron-right')
+
+.friends-wrapper
+  .friends-container
+    仲間たち
+    = link_to new_friend_path, class: "friends-container__button" do
+      "追加・編集"
+    %ul.friends-list
+      %li.friends-list__item 田中さん
+      %li.friends-list__item 鈴木さん
+      %li.friends-list__item 吉田さん
+      %li.friends-list__item 横山さん
+      %li.friends-list__item 吉野さん
+      %li.friends-list__item 野本さん
+  .friend-schedule
+    .schedule-wrapper
+      .schedule-wrapper__display
+        %p.plan 予定
+        %p.done 実績
+      .schedule-wrapper__plan
+        .sample1 ミーティング
+        .sample2 資料作成
+        - 16.times do |i|
+          %span.schedule-wrapper__hour{style: "grid-column: #{i*4+1} / #{i*4+5}; grid-row: 2/3;"}
+            = i+6
+        .sample3 ミーティング
+        .sample4 資料作成

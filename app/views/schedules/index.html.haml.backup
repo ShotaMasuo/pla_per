@@ -1,0 +1,33 @@
+    .plan-container
+      .plan-container__top
+        %h3 予定
+        .other-plan
+          = link_to "#", class:"blue-button" do
+            その他の実績
+      .plan-container__main
+        .plan-container__plan
+          8:00 - 10:00
+          2.0h
+          ミーティング
+        .plan-container__plan
+          8:00 - 10:00
+          2.0h
+          ミーティング
+        .plan-container__plan
+          8:00 - 10:00
+          2.0h
+          ミーティング
+    .result-container
+      .result-container__main
+        .result-container__result
+          8:00 - 10:00
+          2.0h
+          ミーティング
+        .result-container__result
+          8:00 - 10:00
+          2.0h
+          ミーティング
+        .result-container__result
+          8:00 - 10:00
+          2.0h
+          ミーティング
