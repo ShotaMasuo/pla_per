@@ -1,11 +1,11 @@
 .container
   .form-field
-    =form_with model: @schedule, local: true do |f|
+    =form_with model: @schedule, local: true, class: "form-field__form" do |f|
       = f.text_field :name, placeholder: "スケジュール名を入力してください。"
       -# != sprintf(f.date_select(:sche_day, default: Time.now, discard_year:true, use_month_numbers:true, date_separator: '%s'),'月')+'日'
       = f.time_select :start_time, default: Time.now, minute_step: 15
       %span 〜
-      = f.time_select :start_time, default: Time.now + 3600, minute_step: 15
+      = f.time_select :finish_time, default: Time.now + 3600, minute_step: 15
       = f.submit "登録", class: "add-schedule blue-button"
   .button-container
     .left-buttons
