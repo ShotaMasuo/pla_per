@@ -2,7 +2,7 @@ $(function(){
 
   function buildSchedule(schedule){
     let html = `
-              <div class="task" style="grid-column: ${schedule.start_scale}/${schedule.finish_scale};" data-schedule-id="${schedule.id}">
+              <div class="task" style="grid-column: ${schedule.start_scale}/${schedule.finish_scale}; background-color: ${schedule.color};">
                 <a href="/schedules/${schedule.id}/edit">${schedule.name}</a>
               </div>
               `
@@ -23,11 +23,13 @@ $(function(){
     .done(function(schedule){
       let html = buildSchedule(schedule);
       $('.schedule-wrapper__plan').append(html);
-      $('form').reset();
-      $('.add-schedule blue-button').prop('disabled', false);
+      $('form')[0].reset();
+      $('.add-schedule').prop('disabled', false);
     })
     .fail(function(){
       alert("登録できませんでした");
     })
   });
+  
+
 });
