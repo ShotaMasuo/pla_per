@@ -10,8 +10,14 @@
         = @schedule.name
   .edit-cantainer__form
     %p 実績を入力してください。
-    = form_with model: @schedule, url: schedules_path, local: true do |f|
-      = f.time_select :started_time, default: @schedule.start_time, minute_step: 15
+    = form_with model: @schedule, url: schedule_path(@schedule.id), local: true do |f|
+      - if @schedule.started_time
+        = f.time_select :started_time, default: @schedule.started_time, minute_step: 15
+      -else
+        = f.time_select :started_time, default: @schedule.start_time, minute_step: 15
       %span 〜
-      = f.time_select :finished_time, default: @schedule.finish_time, minute_step: 15
+      - if @schedule.finished_time
+        = f.time_select :finished_time, default: @schedule.finished_time, minute_step: 15
+      -else
+        = f.time_select :finished_time, default: @schedule.finish_time, minute_step: 15
       = f.submit "登録", class: "add-schedule blue-button"
