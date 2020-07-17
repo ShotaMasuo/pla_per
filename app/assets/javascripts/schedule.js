@@ -30,7 +30,7 @@ $(function(){
                     <a href="/schedules/${schedule_id}/edit">${schedules[i]['name']}</a>
                   </div>
                 `
-      if (width[2] !== "" && width[3] !== ""){
+      if (width.length > 2){
         let html3 = `
                       <div class="task" style="grid-column: ${width[2]}/${width[3]}; grid-row: 3/4; background-color: ${schedules[i]['color']};">
                         <a href="/schedules/${schedule_id}/edit">${schedules[i]['name']}</a>
