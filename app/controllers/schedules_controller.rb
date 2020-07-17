@@ -12,7 +12,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(sche_day: day)
     @schedules = Schedule.where(sche_day: day)
     @width_records = display_width_calc(@schedules, @width_info)
-    render :index
+    @days = [day-1, day, day+1]
   end
 
   def create
