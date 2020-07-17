@@ -15,12 +15,16 @@
       = link_to friends_path, class: "left-buttons__right blue-button" do
         仲間たち
     .center-buttons
-      = link_to otherday_schedule_path(@schedule.sche_day-1), class: "day-icon" do
+      -# = link_to otherday_schedule_path(@schedule.sche_day-1), class: "day-icon back", id: "/schedules/#{@schedule.sche_day-1}/otherday" do
+      = link_to "#", class: "day-icon back", id: "/schedules/#{@schedule.sche_day-1}/otherday" do
         = icon('fas', 'chevron-left')
-
-      = @schedule.sche_day
+      -# =form_with url: schedules_path do |form|
+      -#   = f.hidden_field 
+      %span.day_display
+        = @schedule.sche_day
       
-      = link_to otherday_schedule_path(@schedule.sche_day+1), class: "day-icon" do
+      -# = link_to otherday_schedule_path(@schedule.sche_day+1), class: "day-icon front", id: "/schedules/#{@schedule.sche_day+1}/otherday" do
+      = link_to "#", class: "day-icon front", id: "/schedules/#{@schedule.sche_day+1}/otherday" do
         = icon('fas', 'chevron-right')
     .right-buttons
       = link_to destroy_user_session_path, method: :delete, class: "pink-button" do

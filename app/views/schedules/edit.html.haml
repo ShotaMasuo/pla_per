@@ -20,4 +20,5 @@
         = f.time_select :finished_time, default: @schedule.finished_time, minute_step: 15
       -else
         = f.time_select :finished_time, default: @schedule.finish_time, minute_step: 15
+      = f.color_field :color, value: @schedule.color
       = f.submit "登録", class: "add-schedule blue-button"
