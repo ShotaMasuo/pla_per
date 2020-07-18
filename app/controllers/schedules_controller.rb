@@ -2,7 +2,7 @@ class SchedulesController < ApplicationController
   def index
     @width_info = Hash.new
     @schedule = Schedule.new(sche_day: Date.today)
-    @schedules = Schedule.where(sche_day: Date.today)
+    @schedules = Schedule.where(sche_day: Date.today).where(user_id: current_user.id)
     @width_records = display_width_calc(@schedules, @width_info)
   end
   
@@ -10,7 +10,7 @@ class SchedulesController < ApplicationController
     day = params[:id].to_date
     @width_info = Hash.new
     @schedule = Schedule.new(sche_day: day)
-    @schedules = Schedule.where(sche_day: day)
+    @schedules = Schedule.where(sche_day: day).where(user_id: current_user.id)
     @width_records = display_width_calc(@schedules, @width_info)
     @days = [day-1, day, day+1]
   end
@@ -36,7 +36,7 @@ class SchedulesController < ApplicationController
   def update
     @schedule = Schedule.find(params[:id])
     if @schedule.update(schedule_params)
-      redirect_to schedules_path
+      redirect_to root_path
     else
       render :edit
     end
