@@ -8,24 +8,22 @@
       %span 〜
       = f.time_select :finish_time, default: Time.now + 3600, minute_step: 15
       = f.submit "登録", class: "add-schedule blue-button"
+  
   .button-container
     .left-buttons
       = link_to "#", class: "left-buttons__left pink-button" do
         csv出力
       = link_to friends_path, class: "left-buttons__right blue-button" do
         仲間たち
+
     .center-buttons
-      -# = link_to otherday_schedule_path(@schedule.sche_day-1), class: "day-icon back", id: "/schedules/#{@schedule.sche_day-1}/otherday" do
       = link_to "#", class: "day-icon back", id: "/schedules/#{@schedule.sche_day-1}/otherday" do
         = icon('fas', 'chevron-left')
-      -# =form_with url: schedules_path do |form|
-      -#   = f.hidden_field 
       %span.day_display
         = @schedule.sche_day
-      
-      -# = link_to otherday_schedule_path(@schedule.sche_day+1), class: "day-icon front", id: "/schedules/#{@schedule.sche_day+1}/otherday" do
       = link_to "#", class: "day-icon front", id: "/schedules/#{@schedule.sche_day+1}/otherday" do
         = icon('fas', 'chevron-right')
+
     .right-buttons
       = link_to destroy_user_session_path, method: :delete, class: "pink-button" do
         ログアウト
@@ -34,6 +32,7 @@
     .schedule-wrapper__display
       %p.plan 予定
       %p.done 実績
+
     .schedule-wrapper__plan
       - @schedules.each do |schedule|
         .task{ style: "grid-column: #{@width_records[schedule.id][0]}/#{@width_records[schedule.id][1]}; grid-row: 1/2; background-color: #{schedule.color};"}
@@ -42,6 +41,7 @@
         - if schedule.started_time && schedule.finished_time
           .task{ style: "grid-column: #{@width_records[schedule.id][2]}/#{@width_records[schedule.id][3]}; grid-row: 3/4; background-color: #{schedule.color};"}
             =schedule.name
+      
       - 16.times do |i|
         %span.schedule-wrapper__hour{style: "grid-column: #{i*4+1} / #{i*4+5}; grid-row: 2/3;"}
           = i+6

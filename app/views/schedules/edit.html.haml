@@ -10,7 +10,7 @@
         = @schedule.name
   .edit-cantainer__form
     %p 実績を入力してください。
-    = form_with model: @schedule, url: schedule_path(@schedule.id), local: true do |f|
+    = form_with model: @schedule, url: schedule_path(@schedule.id), method: :patch, local: true do |f|
       - if @schedule.started_time
         = f.time_select :started_time, default: @schedule.started_time, minute_step: 15
       -else

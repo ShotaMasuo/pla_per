@@ -1,25 +1,18 @@
 $(function(){
 
-  function buildSchedule(schedule){
-    let html = `
-              <div class="task" style="grid-column: ${schedule.start_scale}/${schedule.finish_scale}; background-color: ${schedule.color};">
-                <a href="/schedules/${schedule.id}/edit">${schedule.name}</a>
-              </div>
-              `
-    return html;
-  }
-  function buildButton(newday){
-    let html = `
-      <a class="day-icon back" id="/schedules/${newday[0]}/otherday" href="/schedules/${newday[0]}/otherday">
+  function buildButton(newday, user_id){
+    let html =`
+      <span class="friend-day-icon back" id="/friends/${user_id}/otherday/${newday[0]}">
         <i class="fas fa-chevron-left"></i>
-      </a>
+      </span>
       <span class="day_display">${newday[1]}</span>
-      <a class="day-icon front" id="/schedules/${newday[2]}/otherday" href="/schedules/${newday[2]}/otherday">
+      <span class="friend-day-icon front" id="/friends/${user_id}/otherday/${newday[2]}">
         <i class="fas fa-chevron-right"></i>
-      </a>
+      </span>
     `
     return html;
-  }
+  };
+
   function buildPlanDone(schedules, width_records){
     let html2 = ""
     for(var i = 0; i< schedules.length; i++){
@@ -27,13 +20,13 @@ $(function(){
       let width = width_records[schedule_id]
       let html = `
                   <div class="task" style="grid-column: ${width[0]}/${width[1]}; grid-row: 1/2; background-color: ${schedules[i]['color']};">
-                    <a href="/schedules/${schedule_id}/edit">${schedules[i]['name']}</a>
+                    <span>${schedules[i]['name']}<span>
                   </div>
                 `
       if (width.length > 2){
         let html3 = `
                       <div class="task" style="grid-column: ${width[2]}/${width[3]}; grid-row: 3/4; background-color: ${schedules[i]['color']};">
-                        <a href="/schedules/${schedule_id}/edit">${schedules[i]['name']}</a>
+                        <span>${schedules[i]['name']}</span>
                       </div>
                     `
         html += html3
@@ -42,30 +35,8 @@ $(function(){
     }
     return html2;
   }
-  $('.form-field__form').on('submit', function(e){
-    e.preventDefault();
-    let formData = new FormData(this);
-    let url = $(this).attr('action');
-    $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function(schedule){
-      let html = buildSchedule(schedule);
-      $('.schedule-wrapper__plan').append(html);
-      $('form')[0].reset();
-      $('.add-schedule').prop('disabled', false);
-    })
-    .fail(function(){
-      alert("登録できませんでした");
-    })
-  });
 
-  $(document).on('click', '.day-icon', function(e){
+  $(document).on('click', '.friend-day-icon', function(e){
     e.preventDefault();
     let day = $(this).attr("id");
     $.ajax({
@@ -80,9 +51,33 @@ $(function(){
       $('.back').remove();
       $('.front').remove();
       $('.day_display').remove();
-      $('.center-buttons').append(buildButton(schedules.days));
+      $('.center-buttons').append(buildButton(schedules.days, schedules.user_id));
       $('.schedule-wrapper__plan').append(buildPlanDone(schedules.schedules, schedules.width_records));
-      $('.day-icon').prop('disabled', false);
+      $('.friend-day-icon').prop('disabled', false);
+    })
+    .fail(function(){
+      alert("ごめんなさい！表示できません。。。");
     });
   });
+  $(document).on('click', '.friends-list__item', function(e){
+    e.preventDefault();
+    let day = $(this).attr("id");
+    $.ajax({
+      url: day,
+      type: "GET",
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(schedules){
+      $('.task').remove();
+      $('.back').remove();
+      $('.front').remove();
+      $('.day_display').remove();
+      $('.center-buttons').append(buildButton(schedules.days, schedules.user_id));
+      $('.schedule-wrapper__plan').append(buildPlanDone(schedules.schedules, schedules.width_records));
+      $('.friend-day-icon').prop('disabled', false);
+    })
+  });
+
 });
