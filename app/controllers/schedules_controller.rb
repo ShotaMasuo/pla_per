@@ -19,7 +19,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     @schedule.sche_day = Date.today
     @start_scale = display_calc(schedule_params["start_time(4i)"], schedule_params["start_time(5i)"])
-    @finish_scale = display_calc(schedule_params["finish_time(4i)"], schedule_params["finsh_time(5i)"])
+    @finish_scale = display_calc(schedule_params["finish_time(4i)"], schedule_params["finish_time(5i)"])
     if @schedule.save
       respond_to do |format|
         format.json
