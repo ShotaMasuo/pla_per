@@ -42,6 +42,36 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def spreadsheet
+    # ログインユーザのスケジュールを予定日時順に取得
+    put_schedules = Schedule.where(user_id: current_user.id).order("sche_day ASC").order("start_time ASC")
+    session = GoogleDrive::Session.from_config("config.json")
+    ws = session.spreadsheet_by_key("1gwW0MvC9981eJTbT1MEZmLwp6c5xUSQyH-v8On1ANmw").worksheets[0]
+    header = ["日付", "スケジュール名", "開始予定", "終了予定", "開始時刻", "終了時刻"]
+    ws[1,1] = "#{current_user.name}さんの予定と実績です"
+    ws[1,2] = "hoge"
+    header.length.times do |i|
+      ws[2,i+1] = header[i]
+    end
+    i = 3
+    put_schedules.each do |schedule|
+      ws[i, 1] = schedule.sche_day
+      ws[i, 2] = schedule.name
+      ws[i, 3] = schedule.start_time.strftime("%H:%M")
+      ws[i, 4] = schedule.finish_time.strftime("%H:%M")
+      if schedule.started_time
+        ws[i, 5] = schedule.started_time.strftime("%H:%M")
+      end
+      if schedule.finished_time
+        ws[i, 6] = schedule.finished_time.strftime("%H:%M")
+      end
+      i += 1
+    end
+    ws.save
+    redirect_to root_path
+
+  end
+
 
   private
   def display_width_calc(schedules, width_info)
