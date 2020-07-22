@@ -1,20 +1,44 @@
 class FriendsController < ApplicationController
   def index
+    if params[:keyword] == nil
+      @friends = Friend.includes(:user)
+      @friends = @friends.where(user_id: current_user.id)
+    else
+      user = User.all
+      @friends = user.where('name LIKE(?)', "%#{params[:keyword]}%").where.not(id: current_user.id).limit(10)
+    end
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+  
+  def new
     @friends = Friend.includes(:user)
     @friends = @friends.where(user_id: current_user.id)
-    @first_friend_schedule = @friends[0].user.schedules
-    @first_friend_schedule = @first_friend_schedule.where(sche_day: Date.today)
+    @friend = Friend.new
   end
-
-  def new
-
-  end
-
+  
   def create
-
+    num = friends_params[:follower_ids].length
+    num.times do |num|
+      follower_id = friends_params[:follower_ids][num]
+      friend_flug = Friend.where(user_id: current_user.id).where(follower_id: friends_params[:follower_ids][num])
+      if friend_flug == []
+        Friend.create(user_id: friends_params[:user_id], follower_id: follower_id)
+      end
+    end
+    redirect_to friends_path
   end
-
-  def show
+  def destroy
+    del_friend = Friend.where(follower_id: params[:id].to_i).where(user_id: current_user.id)
+    if del_friend
+      Friend.find(del_friend.ids[0]).delete
+    end
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
   def otherday
     day = params[:schedate].to_date
@@ -25,6 +49,9 @@ class FriendsController < ApplicationController
     @user_id = params[:id]
   end
   private
+  def friends_params
+    params.require(:friend).permit(follower_ids: []).merge(user_id: current_user.id)
+  end
   def display_width_calc(schedules, width_info)
     schedules.each do |schedule|
       width_array = []

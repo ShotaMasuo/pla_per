@@ -1,42 +1,17 @@
-.addfriend-wrapper
-  .search-container
-    .search-container__new-friends
-      =form_with model: @friends, local: true do |f|
-        %input.search-friend{placeholder: "追加したいユーザー名を入力してください", type: "text"}
-        = f.submit "検索", class: "add-schedule blue-button"
-      .search-lists
-        .search-lists__list
-          %p 田中さん
-          .seach-lists__add
-            =link_to "追加", friends_path, class:"add-button"
-        .search-lists__list
-          %p 吉田さん
-          .seach-lists__add
-            =link_to "追加", friends_path, class:"add-button"
-        .search-lists__list
-          %p 横山さん
-          .seach-lists__add
-            =link_to "追加", friends_path, class:"add-button"
-        .search-lists__list
-          %p 吉野さん
-          .seach-lists__add
-            =link_to "追加", friends_path, class:"add-button"
-  .myfriends-container
-    -# .searchlist-container__my-friends
-    %h3 仲間一覧
-    .friend
-      %p 吉野さん
-      .friend__del
-        =link_to "さよなら", friends_path, class:"del-button"
-    .friend
-      %p 吉野さん
-      .friend__del
-        =link_to "さよなら", friends_path, class:"del-button"
-    .friend
-      %p 吉野さん
-      .friend__del
-        =link_to "さよなら", friends_path, class:"del-button"
-    .friend
-      %p 吉野さん
-      .friend__del
-        =link_to "さよなら", friends_path, class:"del-button"
+=form_with model: @friend, local: true do |f|
+  %input.search-friend{placeholder: "追加したいユーザー名を入力してください", type: "text"}
+  %input.addfriends-button{value: "決定！", type: "submit"}
+  .addfriend-wrapper
+    .search-container
+      .search-container__new-friends
+        .search-lists
+    .myfriends-container
+      %h3 仲間一覧
+      - @friends.each do |friend|
+        .friend
+          %p{"data-id": friend.follower_id}
+            =friend.follower.name
+          .friend__del{"data-id": friend.follower_id}
+            %span.del-button
+              さよなら
+            %input{name: "friend[follower_ids][]", type:"hidden", value: friend.follower_id}

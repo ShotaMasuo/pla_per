@@ -6,11 +6,9 @@ Rails.application.routes.draw do
       get 'otherday'
     end
   end
-  resources :friends, only:[:index, :show, :new, :create] do
-    # resources :users, only:[:index] do
-      member do
-        get 'otherday(/:schedate)', to: "friends#otherday"
-      end
-    # end
+  resources :friends, only:[:index, :show, :new, :create, :destroy] do
+    member do
+      get 'otherday(/:schedate)', to: "friends#otherday"
+    end
   end
 end
