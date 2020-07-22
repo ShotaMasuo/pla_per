@@ -47,8 +47,10 @@
         font-size: 1.5rem;
         color: #555;
       }
+      p{
+        margin-top: 16px;
+      }
       li{
-
         &:hover{
           cursor: pointer;
         }
@@ -96,6 +98,29 @@
   }
 }
 
+.search-friend{
+  width: 300px;
+  height: 2rem;
+  font-size: 0.9rem;
+  padding: 0.2rem;
+}
+.addfriends-button{
+  border: none;
+  background-color: #FCADAD;
+  text-decoration: none;
+  color: #fff;
+  padding: 5px;
+  box-shadow: 3px 3px #d3d3d3;
+  border-radius: 5px;
+  &:hover{
+    cursor: pointer;
+  }
+  &:active{
+    position: relative;
+    top: 3px;
+    box-shadow: none;
+  }
+}
 .addfriend-wrapper{
   display: flex;
   width: 100%;
@@ -105,12 +130,6 @@
     width: 50%;
     height: 100%;
     &__new-friends{
-      .search-friend{
-        width: 300px;
-        height: 2rem;
-        font-size: 0.9rem;
-        padding: 0.2rem;
-      }
       .search-lists{
         width: 80%;
         margin-top: 20px;
@@ -157,6 +176,9 @@
         .del-button{
           text-decoration: none;
           color: gray;
+          &:hover{
+            cursor: pointer;
+          }
         }
       }
     }

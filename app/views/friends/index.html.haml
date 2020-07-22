@@ -1,13 +1,12 @@
 .top-container
   .center-buttons
-    -# = link_to "#", class: "day-icon back", id: "/schedules/#{Date.today-1}/otherday" do
-    %span.friend-day-icon.back{id: "/friends/#{@friends[0].follower_id}/otherday/#{Date.today-1}"}
-      = icon('fas', 'chevron-left')
-    %span.day_display
-      = Date.today
-    -# = link_to "#", class: "day-icon front", id: "/schedules/#{Date.today+1}/otherday" do
-    %span.friend-day-icon.front{id: "/friends/#{@friends[0].follower_id}/otherday/#{Date.today+1}"}
-      = icon('fas', 'chevron-right')
+    - if @friends.length != 0
+      %span.friend-day-icon.back{id: "/friends/#{@friends[0].follower_id}/otherday/#{Date.today-1}"}
+        = icon('fas', 'chevron-left')
+      %span.day_display
+        = Date.today
+      %span.friend-day-icon.front{id: "/friends/#{@friends[0].follower_id}/otherday/#{Date.today+1}"}
+        = icon('fas', 'chevron-right')
 
 .friends-wrapper
   .friends-container
@@ -15,6 +14,9 @@
     = link_to new_friend_path, class: "friends-container__button" do
       "追加・編集"
     %ul.friends-list
+      - if @friends.length == 0
+        %p.add-anounce
+          上のボタンから友達を追加しましょう！！！
       - @friends.each do |friend|
         %li.friends-list__item{id: "/friends/#{friend.follower.id}/otherday/#{Date.today}"}
           = friend.follower.name

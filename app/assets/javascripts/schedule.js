@@ -62,6 +62,7 @@ $(function(){
     })
     .fail(function(){
       alert("登録できませんでした");
+      $('.add-schedule').prop('disabled', false);
     })
   });
 
