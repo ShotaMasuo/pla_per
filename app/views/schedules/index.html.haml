@@ -36,10 +36,8 @@
     .schedule-wrapper__plan
       - @schedules.each do |schedule|
         .task{ style: "grid-column: #{@width_records[schedule.id][0]}/#{@width_records[schedule.id][1]}; grid-row: 1/2; background-color: #{schedule.color};"}
-          -# = link_to edit_schedule_path(schedule.id) do
-            -# =schedule.name
-          %span{"data-schedule_id": "#{schedule.id}", class: "task__plan"}
-            = schedule.name
+          = link_to edit_schedule_path(schedule.id) do
+            =schedule.name
         - if schedule.started_time && schedule.finished_time
           .task{ style: "grid-column: #{@width_records[schedule.id][2]}/#{@width_records[schedule.id][3]}; grid-row: 3/4; background-color: #{schedule.color};"}
             =schedule.name

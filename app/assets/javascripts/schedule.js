@@ -3,7 +3,7 @@ $(function(){
   function buildSchedule(schedule){
     let html = `
               <div class="task" style="grid-column: ${schedule.start_scale}/${schedule.finish_scale}; background-color: ${schedule.color};">
-                <span data-schedule_id="${schedule.id}">${schedule.name}</span>
+                <a href="/schedules/${schedule.id}/edit">${schedule.name}</a>
               </div>
               `
     return html;
@@ -27,13 +27,13 @@ $(function(){
       let width = width_records[schedule_id]
       let html = `
                   <div class="task" style="grid-column: ${width[0]}/${width[1]}; grid-row: 1/2; background-color: ${schedules[i]['color']};">
-                    <span data-schedule_id="${schedules[i].id}">${schedules[i]['name']}</span>
+                    <a href="/schedules/${schedule_id}/edit">${schedules[i]['name']}</a>
                   </div>
                 `
       if (width.length > 2){
         let html3 = `
                       <div class="task" style="grid-column: ${width[2]}/${width[3]}; grid-row: 3/4; background-color: ${schedules[i]['color']};">
-                      <span data-schedule_id="${schedules[i].id}">${schedules[i]['name']}</span>
+                        <a href="/schedules/${schedule_id}/edit">${schedules[i]['name']}</a>
                       </div>
                     `
         html += html3
@@ -65,7 +65,7 @@ $(function(){
       $('.add-schedule').prop('disabled', false);
     })
   });
-  
+
   $(document).on('click', '.day-icon', function(e){
     e.preventDefault();
     let day = $(this).attr("id");
