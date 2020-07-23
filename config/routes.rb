@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     member do
       get 'otherday'
     end
+    collection do
+      get 'spreadsheet'
+    end
   end
   resources :friends, only:[:index, :show, :new, :create, :destroy] do
     member do
