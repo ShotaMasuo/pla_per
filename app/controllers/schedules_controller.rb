@@ -41,10 +41,11 @@ class SchedulesController < ApplicationController
   end
   def update
     @schedule = Schedule.find(params[:id])
-    if @schedule.update(schedule_params)
-      redirect_to root_path
-    else
-      render :edit
+    @schedule.update(done_params)
+    @started_scale = display_calc(done_params["started_time(4i)"], done_params["started_time(5i)"])
+    @finished_scale = display_calc(done_params["finished_time(4i)"], done_params["finished_time(5i)"])
+    respond_to do |format|
+      format.json
     end
   end
 
@@ -52,9 +53,7 @@ class SchedulesController < ApplicationController
     if spread_params[:s_date] <= spread_params[:e_date] && spread_params[:s_date] != "" && spread_params[:e_date] != ""
       # ログインユーザのスケジュールを予定日時順に取得
       put_schedules = Schedule.where("sche_day BETWEEN ? AND ?",  spread_params[:s_date], spread_params[:e_date]).where(user_id: current_user.id).order("sche_day").order("start_time")
-      # put_schedules = Schedule.where(user_id: current_user.id).order("sche_day ASC").order("start_time ASC")
       session = GoogleDrive::Session.from_config("config.json")
-      # ws = session.spreadsheet_by_key("1gwW0MvC9981eJTbT1MEZmLwp6c5xUSQyH-v8On1ANmw").worksheets[0]
       sp = session.spreadsheet_by_key("1gwW0MvC9981eJTbT1MEZmLwp6c5xUSQyH-v8On1ANmw")
       if sp.worksheet_by_title("#{current_user.name}")
         ws = sp.worksheet_by_title("#{current_user.name}")
@@ -129,9 +128,14 @@ class SchedulesController < ApplicationController
     end
     return width_info
   end
+  
   def schedule_params
     params.require(:schedule).permit(:name, :sche_day, :start_time, :finish_time, :color, :started_time, :finished_time).merge(user_id: current_user.id)
   end
+  def done_params
+    params.permit(:started_time, :finished_time, :id)
+  end
+
   def display_calc(hour, minute)
     hour = hour.to_i
     minute = minute.to_i
