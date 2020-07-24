@@ -1,3 +1,16 @@
+.edit-wrapper
+  .edit-schedule
+    = form_with url: "#", method: :patch, local: true, class: "edit-schedule__form" do |f|
+      %ul
+        %li
+          %span 開始時刻
+          = f.time_select :started_time, minute_step: 15
+        %li
+          %span 終了時刻
+          = f.time_select :finished_time, minute_step: 15
+        %li.sub-btn
+          = f.submit "登録", class: "send-done"
+        %li.close-btn 閉じる
 .container
   = @message
   .form-field
@@ -47,11 +60,11 @@
 
     .schedule-wrapper__plan
       - @schedules.each do |schedule|
-        .task{ style: "grid-column: #{@width_records[schedule.id][0]}/#{@width_records[schedule.id][1]}; grid-row: 1/2; background-color: #{schedule.color};"}
-          = link_to edit_schedule_path(schedule.id) do
+        .task{"data-schedule_id": "#{schedule.id}", style: "grid-column: #{@width_records[schedule.id][0]}/#{@width_records[schedule.id][1]}; grid-row: 1/2; background-color: #{schedule.color};"}
+          %span
             =schedule.name
         - if schedule.started_time && schedule.finished_time
-          .task{ style: "grid-column: #{@width_records[schedule.id][2]}/#{@width_records[schedule.id][3]}; grid-row: 3/4; background-color: #{schedule.color};"}
+          .task{ style: "grid-column: #{@width_records[schedule.id][2]}/#{@width_records[schedule.id][3]}; grid-row: 3/4; background-color: #{schedule.color}; cursor: default;"}
             =schedule.name
       
       - 16.times do |i|
