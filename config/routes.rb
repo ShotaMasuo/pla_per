@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get 'otherday'
     end
     collection do
-      get 'spreadsheet'
+      post 'spreadsheet'
     end
   end
   resources :friends, only:[:index, :show, :new, :create, :destroy] do
