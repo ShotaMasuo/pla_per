@@ -1,4 +1,5 @@
 .container
+  = @message
   .form-field
     =form_with model: @schedule, local: true, class: "form-field__form" do |f|
       = f.text_field :name, placeholder: "スケジュール名を入力してください。"
@@ -11,7 +12,8 @@
   
   .button-container
     .left-buttons
-      = link_to spreadsheet_schedules_path, class: "left-buttons__left pink-button" do
+      -# = link_to spreadsheet_schedules_path, class: "left-buttons__left pink-button" do
+      = link_to "#", class: "left-buttons__left pink-button" do
         csv出力
       = link_to friends_path, class: "left-buttons__right blue-button" do
         仲間たち
@@ -27,6 +29,16 @@
     .right-buttons
       = link_to destroy_user_session_path, method: :delete, class: "pink-button" do
         ログアウト
+
+  .under-leftbuttons
+    = form_with url: spreadsheet_schedules_path, local: true do |f|
+      %span 期間：
+      = f.date_field :s_date
+      %span 〜
+      = f.date_field :e_date
+      %span ダウンロード
+      = f.check_box :download_flug
+      = f.submit "出力"
   
   .schedule-wrapper
     .schedule-wrapper__display

@@ -2,7 +2,7 @@ $(function(){
 
   function buildSchedule(schedule){
     let html = `
-              <div class="task" style="grid-column: ${schedule.start_scale}/${schedule.finish_scale}; background-color: ${schedule.color};">
+              <div class="task" style="grid-column: ${schedule.start_scale}/${schedule.finish_scale}; background-color: ${schedule.color}; grid-row: 1/2; ">
                 <a href="/schedules/${schedule.id}/edit">${schedule.name}</a>
               </div>
               `
@@ -86,4 +86,14 @@ $(function(){
       $('.day-icon').prop('disabled', false);
     });
   });
+  $(document).on('click', '.left-buttons__left', function(e){
+    e.preventDefault();
+    if ($('div').hasClass('display-input')){
+      $(".under-leftbuttons").slideUp();
+      $(".under-leftbuttons").removeClass('display-input');
+    }else{
+    $(".under-leftbuttons").slideDown();
+    $(".under-leftbuttons").addClass('display-input');
+  }
+  })
 });
