@@ -50,5 +50,7 @@ test:
 production:
   <<: *default
   database: pla_per_production
-  username: pla_per
+  # username: pla_per
+  username: root
   password: <%= ENV['PLA_PER_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
