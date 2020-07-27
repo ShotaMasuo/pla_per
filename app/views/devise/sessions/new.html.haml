@@ -1,6 +1,6 @@
 .login-wrapper
   .login-left
-    = image_tag "/assets/top-image.jpg", class: "login-left__image"
+    = image_tag asset_path("top-image.jpg"), class: "login-left__image"
   .login-right
     .login-right__form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
