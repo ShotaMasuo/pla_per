@@ -14,5 +14,8 @@
         = link_to "予定 - 実績 管理アプリ", "/", class: "main-title__toplink"
         %span.login-username
           - if current_user
-            = current_user.name
+            = current_user.name + "さん、こんにちは"
+            %br
+            = link_to destroy_user_session_path, method: :delete, class: "logout-link" do
+              ログアウト
     = yield

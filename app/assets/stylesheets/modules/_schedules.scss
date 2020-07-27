@@ -71,9 +71,9 @@
   background-color: #FCADAD;
   text-decoration: none;
   color: #fff;
-  padding: 5px;
-  box-shadow: 3px 3px #d3d3d3;
-  border-radius: 5px;
+  padding: 3px;
+  box-shadow: 1px 1px #d3d3d3;
+  border-radius: 3px;
   &:hover{
     cursor: pointer;
   }
@@ -103,6 +103,13 @@
     font-size: 0.5rem;
     float: right;
     vertical-align: bottom;
+    .logout-link{
+      text-decoration: none;
+      color: #555;
+      background-color: #eee;
+      padding: 2px;
+      border-radius: 5px;
+    }
   }
 }
 
@@ -120,9 +127,9 @@
       background-color: #CFE6FA;
       color: #fff;
       text-decoration: none;
-      padding: 5px;
-      box-shadow: 3px 3px #d3d3d3;
-      border-radius: 5px;
+      padding: 3px;
+      box-shadow: 1px 1px #d3d3d3;
+      border-radius: 3px;
       &:hover{
         cursor: pointer;
       }
@@ -142,9 +149,9 @@
       background-color: #FCADAD;
       text-decoration: none;
       color: #fff;
-      padding: 5px;
-      box-shadow: 3px 3px #d3d3d3;
-      border-radius: 5px;
+      padding: 3px;
+      box-shadow: 1px 1px #d3d3d3;
+      border-radius: 3px;
       &:hover{
         cursor: pointer;
       }
@@ -159,9 +166,9 @@
       background-color: #CFE6FA;
       color: #fff;
       text-decoration: none;
-      padding: 5px;
-      box-shadow: 3px 3px #d3d3d3;
-      border-radius: 5px;
+      padding: 3px;
+      box-shadow: 1px 1px #d3d3d3;
+      border-radius: 3px;
       &:hover{
         cursor: pointer;
       }
@@ -174,6 +181,7 @@
     .left-buttons{
       &__left{
         margin-right: 5px;
+        width: 30%;
       }
       .denger-button{
         margin-left: 5px;
@@ -182,6 +190,8 @@
       }
     }
     .center-buttons{
+      width: 30%;
+      text-align: center;
       .day-icon{
         display: inline;
         text-decoration: none;
@@ -192,6 +202,8 @@
       }
     }
     .right-buttons{
+      width: 30%;
+      text-align: right;
       .pink-button{
         border: none;
         background-color: #FCADAD;
