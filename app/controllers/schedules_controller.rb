@@ -91,9 +91,29 @@ class SchedulesController < ApplicationController
       @@i += 1
       redirect_to root_path
     end
-
   end
 
+  def edidel
+    @schedules = Schedule.where(sche_day: Date.today).where(user_id: current_user.id).order("start_time")
+  end
+
+  def edi
+    schedule = Schedule.find(params[:id].to_i)
+    schedule.update(edidel_params)
+    @schedule = Schedule.find(params[:id].to_i)
+    respond_to do |format|
+      format.json
+    end
+  end
+
+  def destroy
+    Schedule.find(params[:id].to_i).delete
+    @sche_id = params[:id].to_i
+    respond_to do |format|
+      format.json
+    end
+
+  end
 
   private
   def display_width_calc(schedules, width_info)
@@ -131,6 +151,9 @@ class SchedulesController < ApplicationController
   
   def schedule_params
     params.require(:schedule).permit(:name, :sche_day, :start_time, :finish_time, :color, :started_time, :finished_time).merge(user_id: current_user.id)
+  end
+  def edidel_params
+    params.permit(:id, :name, :sche_day, :start_time, :finish_time, :color, :started_time, :finished_time).merge(user_id: current_user.id)
   end
   def done_params
     params.permit(:started_time, :finished_time, :id)

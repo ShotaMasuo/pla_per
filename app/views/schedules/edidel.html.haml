@@ -1,0 +1,42 @@
+%table
+  %tr
+    %th スケジュール名
+    %th 開始予定
+    %th 終了予定
+    %th 開始時刻
+    %th 終了時刻
+  - @schedules.each do |schedule|
+    %tr{"data-trschedule_id": "#{schedule.id}"}
+      = form_with url: "/schedules/#{schedule.id}/edidel", method: :post, class: "edidel_form", local: true do |f|
+        = f.hidden_field :id, value: schedule.id
+        %td
+          %span.edidel_del{"data-schedule_id": "#{schedule.id}"} 削除
+          = f.text_field :name, value: schedule.name
+        %td
+          %span
+            = schedule.start_time.strftime("%H:%M")
+            →
+          = f.time_select :start_time, default: schedule.start_time, minute_step: 15
+        %td
+          %span
+            = schedule.finish_time.strftime("%H:%M")
+            →
+          = f.time_select :finish_time, default: schedule.finish_time, minute_step: 15
+        %td
+          - if schedule.started_time
+            %span
+              = schedule.started_time.strftime("%H:%M")
+              →
+            = f.time_select :started_time, default: schedule.started_time, minute_step: 15
+          - else
+            未登録
+        %td
+          - if schedule.finished_time
+            %span
+              = schedule.finished_time.strftime("%H:%M")
+              →
+            = f.time_select :finished_time, default: schedule.finished_time, minute_step: 15
+          - else
+            未登録
+        %td
+          = f.submit "ﾘｽｹ!!", class: "edidel_edi"
