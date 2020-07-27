@@ -30,6 +30,8 @@
         csv出力
       = link_to friends_path, class: "left-buttons__right blue-button" do
         仲間たち
+      = link_to edidel_schedules_path, class: "denger-button" do
+        編集・削除
 
     .center-buttons
       = link_to "#", class: "day-icon back", id: "/schedules/#{@schedule.sche_day-1}/otherday" do

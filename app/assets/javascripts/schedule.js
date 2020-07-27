@@ -2,7 +2,7 @@ $(function(){
 
   function buildSchedule(schedule){
     let html = `
-              <div class="task" style="grid-column: ${schedule.start_scale}/${schedule.finish_scale}; background-color: ${schedule.color}; grid-row: 1/2; ">
+              <div class="task"  data-schedule_id="${schedule.id}" style="grid-column: ${schedule.start_scale}/${schedule.finish_scale}; background-color: ${schedule.color}; grid-row: 1/2;">
                 <span>${schedule.name}</span>
               </div>
               `
@@ -26,7 +26,7 @@ $(function(){
       let schedule_id = schedules[i].id
       let width = width_records[schedule_id]
       let html = `
-                  <div class="task" style="grid-column: ${width[0]}/${width[1]}; grid-row: 1/2; background-color: ${schedules[i]['color']}; data-schedule_id="${schedule_id}"">
+                  <div class="task" data-schedule_id="${schedule_id}" style="grid-column: ${width[0]}/${width[1]}; grid-row: 1/2; background-color: ${schedules[i]['color']}; ">
                     <span>${schedules[i]['name']}</span>
                   </div>
                 `
@@ -66,7 +66,7 @@ $(function(){
     .done(function(schedule){
       let html = buildSchedule(schedule);
       $('.schedule-wrapper__plan').append(html);
-      $('form')[0].reset();
+      $('form')[1].reset();
       $('.add-schedule').prop('disabled', false);
     })
     .fail(function(){
@@ -129,7 +129,6 @@ $(function(){
       contentType: false
     })
     .done(function(schedule){
-      console.log(schedule.finished_scale);
       $('.schedule-wrapper__plan').append(buildDone(schedule.started_scale, schedule.finished_scale, schedule.color, schedule.name));
       $('.send-done').prop('disabled', false);
     })

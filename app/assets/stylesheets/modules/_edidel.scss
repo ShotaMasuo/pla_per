@@ -1,0 +1,25 @@
+table{
+  margin: 0 auto;
+  th{
+    text-align: center;
+  }
+  tr{
+    border-bottom: 5px solid #fff;
+    td{
+    padding: 3px;
+    border-right: 1px dotted #444;
+    text-align: center;
+    &:last-child{
+      border: none;
+    }
+    .edidel_edi{
+      padding: 0 2px;
+      background-color: #fffaf0;
+      border: 1px solid #444;
+      border-radius: 5px;
+    }
+
+    }
+
+  }
+}
