@@ -118,9 +118,13 @@
   height: calc(100vh - 70px);
   margin: 10px auto;
   .form-field{
-    #schedule_name{
-      width: 60%;
-      min-width: 300px;
+    display: flex;
+    justify-content: space-between;
+    &__left{
+      width: 70%;
+      #schedule_name{
+        width: 80%;
+      }
     }
     .blue-button{
       border: none;
@@ -297,4 +301,82 @@
       width: 300px;
     }
   }
+}
+
+@media (max-width: 880px){
+  .form-field{
+    display: block!important;
+    &__left{
+      width: 100%!important;
+      #schedule_name{
+        width: 70%!important;
+      }
+    }
+    &__right{
+      text-align: right;
+      margin-top: 5px;
+    }
+  }
+  .button-container{
+    font-size: 13px;
+  
+  }
+}
+@media (max-width: 535px){
+  .main-title{
+    height: 50px;
+    .main-title__title{
+      font-size: 20px;
+    }
+    .login-username__greeting{
+      display: none;
+      
+    }
+    .logout-link{
+      padding-bottom: 5px;
+    }
+  }
+  .form-field{
+    font-size: 10px;
+  }
+  .left-buttons{
+    width: 30%;
+    &__child{
+      width: 30%;
+      display: block;
+      margin-bottom: 3px;
+    }
+    &__left{
+      width: 100%!important;
+      text-align: center;
+    }
+    &__right{
+      width: 100%!important;
+      text-align: center;
+    }
+    .denger-button{
+      width: 100%!important;
+      text-align: center;
+
+    }
+  }
+  .schedule-wrapper{
+    font-size: 10px;
+  }
+}
+@media (max-width: 360px){
+  .main-title{
+    height: 50px;
+    .main-title__title{
+      font-size: 16px;
+      padding-top: 13px;
+    }
+  }
+  .button-container{
+    font-size: 10px;
+  }
+  #schedule_color{
+    width: 30px;
+  }
+
 }

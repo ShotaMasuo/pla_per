@@ -99,7 +99,9 @@ $(function(){
   });
   $(document).on('click', '.friends-list__item', function(e){
     e.preventDefault();
+    $(".friends-list__item").removeClass("selected-name")
     let day = $(this).attr("id");
+    $(this).addClass("selected-name");
     $.ajax({
       url: day,
       type: "GET",
@@ -130,19 +132,23 @@ $(function(){
     .done(function(friends){
       let my_friends = $(".friend").find("p");
       let num = my_friends.length
-      for (let i =0; i < num; i++){
-        my_friends_array.push(my_friends[i].getAttribute('data-id'))
-      }
-      $('.search-lists__list').remove();
-      if (friends.length !== 0){
-        friends.forEach(function(friend){
-          if (my_friends_array.includes(String(friend.id))){
-          }else{
-            buildFriendList(friend);
-          }
-        })
+      if(keyword !== ""){
+        for (let i =0; i < num; i++){
+          my_friends_array.push(my_friends[i].getAttribute('data-id'))
+        }
+        $('.search-lists__list').remove();
+        if (friends.length !== 0){
+          friends.forEach(function(friend){
+            if (my_friends_array.includes(String(friend.id))){
+            }else{
+              buildFriendList(friend);
+            }
+          })
+        }else{
+          $('.search-lists').append(addNoUserMessage("そんな人いません"));
+        }
       }else{
-        $('.search-lists').append(addNoUserMessage("そんな人いません"));
+        $(".search-lists__list").remove();
       }
     })
     .fail(function(){
@@ -173,6 +179,42 @@ $(function(){
       alert('うまくいかんかった');
     })
   })
+  $(document).on("click", ".hamberger", function(){
+    $(".friends-container").slideDown();
+    $(".friends-container").addClass('display-block');
+    $(".friends-container").removeClass('display-none');
+    $(".close-icon").addClass('display-block');
+    $(".hamberger").addClass('display-none');
+    $('.hamberger').prop('disabled', false);
+    $(".close-icon").removeClass('display-none');
+  })
+  
+  $(document).on("click", ".close-icon", function(){
+    $(".friends-container").slideUp();
+    $(".friends-container").removeClass('display-block');
+    $(".close-icon").addClass('display-none');
+    $(".hamberger").fadeIn();
+    $(".hamberger").removeClass('display-none');
+    $('.close-icon').prop('disabled', false);
+  })
 
-
+  $(window).on('load resize', function(){
+    var winW = $(window).width();
+    var devW = 360;
+    if (winW <= devW) {
+      //360px以下の時の処理
+      $('.friends-container').removeClass('display-block')
+      $('.friends-container').addClass('display-none')
+      $('.hamberger').addClass('display-block');
+      $('.hamberger').removeClass('display-none');
+      // $('.addfriend-wrapper').removeClass('')
+    } else {
+      //360pxより大きい時の処理
+      $('.friends-container').removeClass('display-none')
+      $('.friends-container').addClass('display-block')
+      $('.hamberger').removeClass('display-block');
+      $('.hamberger').addClass('display-none');
+      $('.close-icon').removeClass('display-block');
+    }
+  });
 });

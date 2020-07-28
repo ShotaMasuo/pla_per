@@ -5,6 +5,7 @@
     %title PlaPer
     = csrf_meta_tags
     = csp_meta_tag
+    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0", name: "viewport"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application'
     = stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap', media: 'all', 'data-turbolinks-track': 'reload'
@@ -14,8 +15,9 @@
         = link_to "予定 - 実績 管理アプリ", "/", class: "main-title__toplink"
         %span.login-username
           - if current_user
-            = current_user.name + "さん、こんにちは"
-            %br
+            %span.login-username__greeting
+              = current_user.name + "さん, こんにちは"
+              %br
             = link_to destroy_user_session_path, method: :delete, class: "logout-link" do
               ログアウト
     = yield

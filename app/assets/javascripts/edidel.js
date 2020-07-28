@@ -11,6 +11,9 @@ $(function(){
       let del_tr = "[data-trschedule_id=" + delId.sche_id + "]"
       $(del_tr).remove();
     })
+    .fail(function(){
+      alert('うまくいかんかった');
+    })
   });
 
   $('.edidel_form').on('submit', function(e){
@@ -29,7 +32,7 @@ $(function(){
       $('.edidel_edi').prop('disabled', false);
     })
     .fail(function(){
-
+      alert('うまくいかんかった');
     })
   })
 })

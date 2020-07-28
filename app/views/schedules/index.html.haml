@@ -13,25 +13,27 @@
         %li.close-btn 閉じる
 .container
   = @message
-  .form-field
-    =form_with model: @schedule, local: true, class: "form-field__form" do |f|
-      = f.text_field :name, placeholder: "スケジュール名を入力してください。"
-      = f.label :color
-      = f.color_field :color, value: "#ffffff"
-      = f.time_select :start_time, default: Time.now, minute_step: 15
-      %span 〜
-      = f.time_select :finish_time, default: Time.now + 3600, minute_step: 15
-      = f.submit "登録", class: "add-schedule blue-button"
+  =form_with model: @schedule, local: true, class: "form-field__form" do |f|
+    .form-field
+      .form-field__left
+        = f.text_field :name, placeholder: "スケジュール名を入力してください。"
+        = f.label :color
+        = f.color_field :color, value: "#ffffff"
+      .form-field__right
+        = f.time_select :start_time, default: Time.now, minute_step: 15
+        %span 〜
+        = f.time_select :finish_time, default: Time.now + 3600, minute_step: 15
+        = f.submit "登録", class: "add-schedule blue-button"
   
   .button-container
     .left-buttons
       -# = link_to spreadsheet_schedules_path, class: "left-buttons__left pink-button" do
-      = link_to "#", class: "left-buttons__left pink-button" do
+      = link_to "#", class: "left-buttons__left pink-button left-buttons__child" do
         csv出力
-      = link_to friends_path, class: "left-buttons__right blue-button" do
+      = link_to friends_path, class: "left-buttons__right blue-button left-buttons__child" do
         仲間たち
-      = link_to edidel_schedules_path, class: "denger-button" do
-        編集・削除
+      = link_to edidel_schedules_path, class: "denger-button left-buttons__child" do
+        編集/削除
 
     .center-buttons
       = link_to "#", class: "day-icon back", id: "/schedules/#{@schedule.sche_day-1}/otherday" do
