@@ -9,10 +9,15 @@
         = icon('fas', 'chevron-right')
 
 .friends-wrapper
+  %span.hamberger
+    = icon('fas', 'bars')
   .friends-container
+    %span.close-icon
+      = icon('fas', 'times')
+    %br
     仲間たち
     = link_to new_friend_path, class: "friends-container__button" do
-      "追加・編集"
+      追加/編集
     %ul.friends-list
       - if @friends.length == 0
         %p.add-anounce

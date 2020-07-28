@@ -1,42 +1,95 @@
-%table
-  %tr
-    %th スケジュール名
-    %th 開始予定
-    %th 終了予定
-    %th 開始時刻
-    %th 終了時刻
-  - @schedules.each do |schedule|
-    %tr{"data-trschedule_id": "#{schedule.id}"}
-      = form_with url: "/schedules/#{schedule.id}/edidel", method: :post, class: "edidel_form", local: true do |f|
-        = f.hidden_field :id, value: schedule.id
-        %td
-          %span.edidel_del{"data-schedule_id": "#{schedule.id}"} 削除
-          = f.text_field :name, value: schedule.name
-        %td
-          %span
-            = schedule.start_time.strftime("%H:%M")
-            →
-          = f.time_select :start_time, default: schedule.start_time, minute_step: 15
-        %td
-          %span
-            = schedule.finish_time.strftime("%H:%M")
-            →
-          = f.time_select :finish_time, default: schedule.finish_time, minute_step: 15
-        %td
-          - if schedule.started_time
+- if @schedules[0] != nil
+  %table.edideltable
+    %tr
+      %th スケジュール名
+      %th 開始予定
+      %th 終了予定
+      %th 開始時刻
+      %th 終了時刻
+    - @schedules.each do |schedule|
+      %tr{"data-trschedule_id": "#{schedule.id}"}
+        = form_with url: "/schedules/#{schedule.id}/edidel", method: :post, class: "edidel_form", local: true do |f|
+          = f.hidden_field :id, value: schedule.id
+          %td
+            %span.edidel_del{"data-schedule_id": "#{schedule.id}"} 削除
+            = f.text_field :name, value: schedule.name
+          %td
             %span
-              = schedule.started_time.strftime("%H:%M")
+              = schedule.start_time.strftime("%H:%M")
               →
-            = f.time_select :started_time, default: schedule.started_time, minute_step: 15
-          - else
-            未登録
-        %td
-          - if schedule.finished_time
+            = f.time_select :start_time, default: schedule.start_time, minute_step: 15
+          %td
             %span
-              = schedule.finished_time.strftime("%H:%M")
+              = schedule.finish_time.strftime("%H:%M")
               →
-            = f.time_select :finished_time, default: schedule.finished_time, minute_step: 15
-          - else
-            未登録
-        %td
-          = f.submit "ﾘｽｹ!!", class: "edidel_edi"
+            = f.time_select :finish_time, default: schedule.finish_time, minute_step: 15
+          %td
+            - if schedule.started_time
+              %span
+                = schedule.started_time.strftime("%H:%M")
+                →
+              = f.time_select :started_time, default: schedule.started_time, minute_step: 15
+            - else
+              未登録
+          %td
+            - if schedule.finished_time
+              %span
+                = schedule.finished_time.strftime("%H:%M")
+                →
+              = f.time_select :finished_time, default: schedule.finished_time, minute_step: 15
+            - else
+              未登録
+          %td
+            = f.submit "ﾘｽｹ!!", class: "edidel_edi"
+            %span.sub-edidel_del{"data-schedule_id": "#{schedule.id}"} 削除
+
+  %table.edideltable__smartphone
+    - @schedules.each do |schedule|
+      %tr{"data-trschedule_id": "#{schedule.id}"}
+        = form_with url: "/schedules/#{schedule.id}/edidel", method: :post, class: "edidel_form", local: true do |f|
+          %tr
+            %th schedule：
+            %td
+              = f.hidden_field :id, value: schedule.id
+              = f.text_field :name, value: schedule.name
+          %tr
+            %th 開始予定：
+            %td
+              %span
+                = schedule.start_time.strftime("%H:%M")
+                →
+              = f.time_select :start_time, default: schedule.start_time, minute_step: 15
+          %tr
+            %th 終了予定：
+            %td
+              %span
+                = schedule.finish_time.strftime("%H:%M")
+                →
+              = f.time_select :finish_time, default: schedule.finish_time, minute_step: 15
+          %tr
+            %th 開始時刻：
+            %td
+              - if schedule.started_time
+                %span
+                  = schedule.started_time.strftime("%H:%M")
+                  →
+                = f.time_select :started_time, default: schedule.started_time, minute_step: 15
+              - else
+                未登録
+          %tr
+            %th 終了時刻：
+            %td
+              - if schedule.finished_time
+                %span
+                  = schedule.finished_time.strftime("%H:%M")
+                  →
+                = f.time_select :finished_time, default: schedule.finished_time, minute_step: 15
+              - else
+                未登録
+          %tr
+            %td.btn_wrapper
+              = f.submit "ﾘｽｹ!!", class: "edidel_edi"
+              %span.sub-edidel_del{"data-schedule_id": "#{schedule.id}"} 削除
+
+- else
+  %p 編集するスケジュールがありません

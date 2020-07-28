@@ -1,4 +1,4 @@
-table{
+.edideltable{
   margin: 0 auto;
   th{
     text-align: center;
@@ -6,20 +6,67 @@ table{
   tr{
     border-bottom: 5px solid #fff;
     td{
-    padding: 3px;
-    border-right: 1px dotted #444;
-    text-align: center;
-    &:last-child{
-      border: none;
+      padding: 3px;
+      border-right: 1px dotted #444;
+      text-align: center;
+      &:last-child{
+        border: none;
+      }
+      .edidel_edi{
+        padding: 0 2px;
+        background-color: #fffaf0;
+        border: 1px solid #444;
+        border-radius: 5px;
+      }
+      .edidel_del{
+        color: red;
+        &:hover{
+          cursor: pointer;
+        }
+      }
+      .sub-edidel_del{
+        display: none;
+      } 
     }
-    .edidel_edi{
-      padding: 0 2px;
-      background-color: #fffaf0;
-      border: 1px solid #444;
-      border-radius: 5px;
-    }
+  }
+}
+.edideltable__smartphone{
+  display: none;
+}
+@media (max-width: 935px){
+  .edideltable{
+    display: none;
+  }
+  .edideltable__smartphone{
+    display: block;
+    tbody{
+      display: block;
+      margin: 5px 0 0 5px;
+      tr{
+        display: block;
+        margin-bottom: 5px;
+        &:nth-child(8n), &:first-child{
+          margin-top: 20px;
+          border-top: 1px solid #444;
+        }
+        &:first-child{
+          border-top: none;
+        }
+      }
+      .btn_wrapper{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        .sub-edidel_del{
+          color: red;
+          display: inline-block;
+          margin-left: 16px;
+        }
+        .sub-edidel_del{
+          display: inline-block;
+        }
 
+      }
     }
-
   }
 }
