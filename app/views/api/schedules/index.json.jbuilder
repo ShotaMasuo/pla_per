@@ -1,4 +1,4 @@
-@schedules.each do |schedule|
+json.array! @schedules.each do |schedule|
   json.name schedule.name
   json.start_time schedule.start_time.strftime('%H:%M')
   json.finish_time schedule.finish_time.strftime('%H:%M')
