@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!
   @@i = 0
   def index
     @message = ""
