@@ -16,4 +16,7 @@ Rails.application.routes.draw do
       get 'otherday(/:schedate)', to: "friends#otherday"
     end
   end
+  namespace :api do
+    resources :schedules, only: :index, defaults: {format: 'json'}
+  end
 end
