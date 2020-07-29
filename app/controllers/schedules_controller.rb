@@ -84,7 +84,8 @@ class SchedulesController < ApplicationController
       ws.save
       if spread_params[:download_flug] == "1"
         file_name = "#{current_user.name}#{spread_params[:s_date]}#{spread_params[:e_date]}.csv"
-        ws.export_as_file("app/assets/downloads/#{file_name}")
+        # ws.export_as_file("app/assets/downloads/#{file_name}")
+        ws.export_as_file("public/downloads/#{file_name}")
       end
       redirect_to root_path
     else
