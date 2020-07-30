@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     end
   end
   namespace :api do
-    resources :schedules, only: :index, defaults: {format: 'json'}
+    resources :schedules, only: :index, defaults: {format: 'json'} do
+      member do
+        get 'searchPerson', to: "schedules#searchPerson"
+      end
+    end
   end
 end
