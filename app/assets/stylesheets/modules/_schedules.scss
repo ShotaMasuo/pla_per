@@ -208,22 +208,8 @@
     .right-buttons{
       width: 30%;
       text-align: right;
-      .pink-button{
-        border: none;
-        background-color: #FCADAD;
-        text-decoration: none;
-        color: #fff;
-        padding: 5px;
-        box-shadow: 3px 3px #d3d3d3;
-        border-radius: 5px;
-        &:hover{
-          cursor: pointer;
-        }
-        &:active{
-          position: relative;
-          top: 3px;
-          box-shadow: none;
-        }
+      .twitter-icon{
+        color: #00bfff;
       }
     }
   }

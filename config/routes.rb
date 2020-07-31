@@ -23,5 +23,6 @@ Rails.application.routes.draw do
         get 'udSchedule/:stime/:etime', to: "schedules#upSchedule"
       end
     end
+    resources :schedules, only: :create
   end
 end
