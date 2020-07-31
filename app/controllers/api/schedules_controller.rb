@@ -32,7 +32,7 @@ class Api::SchedulesController < ApplicationController
     content = "○今日の実績\n"
     schedules.each do |schedule|
       if schedule.started_time != nil && schedule.finished_time
-        content += "    #{schedule.name} : #{(schedule.finished_time - schedule.started_time) / 3600}時間\n"
+        content += "    ●#{schedule.name} : #{(schedule.finished_time - schedule.started_time) / 3600}時間\n"
       end
     end
     client.update(content)
