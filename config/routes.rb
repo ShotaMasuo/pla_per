@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :schedules, only: :index, defaults: {format: 'json'} do
       member do
         get 'searchPerson', to: "schedules#searchPerson"
+        get 'udSchedule/:stime/:etime', to: "schedules#upSchedule"
       end
     end
   end
