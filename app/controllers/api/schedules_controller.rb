@@ -21,4 +21,20 @@ class Api::SchedulesController < ApplicationController
     schedule.finished_time = save_finished_time
     schedule.save
   end
+  def create
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV["CONSUMER_KEY"]
+      config.consumer_secret     = ENV["CONSUMER_SECRET"]
+      config.access_token        = ENV["ACCESS_TOKEN"]
+      config.access_token_secret = ENV["ACCESS_TOKEN_SECRET"]
+    end
+    schedules = Schedule.where(user_id: current_user.id).where(sche_day: Date.today).order("start_time asc")
+    content = "○今日の実績\n"
+    schedules.each do |schedule|
+      if schedule.started_time != nil && schedule.finished_time
+        content += "    #{schedule.name} : #{(schedule.finished_time - schedule.started_time) / 3600}時間\n"
+      end
+    end
+    client.update(content)
+  end
 end
