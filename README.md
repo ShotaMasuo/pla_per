@@ -28,16 +28,16 @@
         > javascript 非同期通信
 
 1. iPhone App
-  - ユーザ検索
-  - 予定の表示
-      > json形式でのデータ受信
-  - 実績の登録
-      > json形式でのデータ送信
+    1. ユーザ検索
+    1. 予定の表示
+        > json形式でのデータ受信
+    1. 実績の登録
+        > json形式でのデータ送信
 
 1. Twittter
-  -　実績投稿
-      > Twitter API
+    1.　実績投稿
+          > Twitter API
   
 1. Google
-  - スプレッドシートへ出力
-      > Twitter API
+    1. スプレッドシートへ出力
+        > Twitter API
