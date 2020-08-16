@@ -1,24 +1,43 @@
-# README
+# WHAT
+予定と実績を並べて比較できるアプリケーションです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# WHY
+プログラミングを独学していた際、カレンダーアプリに予定を入力し進めていました。
+その予定に対して実際どのくらいやったのかを管理するアプリケーションがなかったため、今回作成しました。
 
-Things you may want to cover:
+# function
+1. user ( devise使用 )
+    1. サインアップ
+    1. ログイン
+    1. ログアウト
+1. schedule
+    1. 新規作成
+        - 入力項目：　スケジュール名・時間（6:00-22:00 15分間隔）・色
+    1. スケジュール表示
+        - 日付移動可能
+        > javascript 非同期通信
+    1. 実績入力
+        > javascript 非同期通信
+    1. 編集・削除
 
-* Ruby version
+1. friend
+    1. 追加・削除
+        > javascript インクリメンタルサーチ
+    1. スケジュール表示
+        - 日付移動可能
+        > javascript 非同期通信
 
-* System dependencies
+1. iPhone App
+  - ユーザ検索
+  - 予定の表示
+      > json形式でのデータ受信
+  - 実績の登録
+      > json形式でのデータ送信
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Twittter
+  -　実績投稿
+      > Twitter API
+  
+1. Google
+  - スプレッドシートへ出力
+      > Twitter API
