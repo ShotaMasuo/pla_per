@@ -10,6 +10,8 @@
     1. サインアップ
     1. ログイン
     1. ログアウト
+![signup](https://user-images.githubusercontent.com/63441901/90575389-3d9b1700-e1f6-11ea-941d-6a05d0b753d2.gif)
+
 1. schedule
     1. 新規作成
         - 入力項目：　スケジュール名・時間（6:00-22:00 15分間隔）・色
