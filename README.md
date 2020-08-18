@@ -17,6 +17,7 @@
         - 日付移動可能
         > javascript 非同期通信
     1. 実績入力
+        > jQuery 入力画面fadeIn
         > javascript 非同期通信
     1. 編集・削除
 
@@ -27,17 +28,23 @@
         - 日付移動可能
         > javascript 非同期通信
 
-1. iPhone App
+1. iPhone App（swift5）
     1. ユーザ検索
     1. 予定の表示
         > json形式でのデータ受信
     1. 実績の登録
         > json形式でのデータ送信
 
-1. Twittter
+1. Twittter API
     1.　実績投稿
           > Twitter API
   
-1. Google
+1. Google API
     1. スプレッドシートへ出力
         > Twitter API
+
+# server
+aws (インスタイプ：t2.micro)
+
+# DB
+MySQL
