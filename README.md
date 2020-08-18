@@ -32,6 +32,7 @@
     1. スケジュール表示
         - 日付移動可能
         > javascript 非同期通信
+![friend](https://user-images.githubusercontent.com/63441901/90575779-24469a80-e1f7-11ea-866c-3128c9d9ee54.gif)
 
 1. iPhone App（swift5）
     1. ユーザ検索
