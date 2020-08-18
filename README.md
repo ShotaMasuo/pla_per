@@ -11,6 +11,7 @@
 ![signup](https://user-images.githubusercontent.com/63441901/90575389-3d9b1700-e1f6-11ea-941d-6a05d0b753d2.gif)
     1. ログイン
     1. ログアウト
+    
 ![loginout](https://user-images.githubusercontent.com/63441901/90575571-a8e4e900-e1f6-11ea-809b-2ef338ee56cd.gif)
 
 
