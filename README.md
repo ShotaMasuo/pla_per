@@ -11,7 +11,7 @@
 ![signup](https://user-images.githubusercontent.com/63441901/90575389-3d9b1700-e1f6-11ea-941d-6a05d0b753d2.gif)
     1. ログイン
     1. ログアウト
-![Uploading loginout.gif…]()
+![loginout](https://user-images.githubusercontent.com/63441901/90575571-a8e4e900-e1f6-11ea-809b-2ef338ee56cd.gif)
 
 
 1. schedule
@@ -24,7 +24,8 @@
         > jQuery 入力画面fadeIn
         > javascript 非同期通信
     1. 編集・削除
-![Uploading schedule.gif…]()
+![schedule](https://user-images.githubusercontent.com/63441901/90575602-b9955f00-e1f6-11ea-91f0-e07be2d9f9f1.gif)
+
 1. friend
     1. 追加・削除
         > javascript インクリメンタルサーチ
