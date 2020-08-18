@@ -7,10 +7,10 @@
 
 # function
 1. user ( devise使用 )
-    1. サインアップ
+    1. サインアップ    ![signup](https://user-images.githubusercontent.com/63441901/90575389-3d9b1700-e1f6-11ea-941d-6a05d0b753d2.gif)
     1. ログイン
     1. ログアウト
-![signup](https://user-images.githubusercontent.com/63441901/90575389-3d9b1700-e1f6-11ea-941d-6a05d0b753d2.gif)
+
 
 1. schedule
     1. 新規作成
