@@ -24,6 +24,7 @@
         > jQuery 入力画面fadeIn
         > javascript 非同期通信
     1. 編集・削除
+    
 ![schedule](https://user-images.githubusercontent.com/63441901/90575602-b9955f00-e1f6-11ea-91f0-e07be2d9f9f1.gif)
 
 1. friend
@@ -32,6 +33,7 @@
     1. スケジュール表示
         - 日付移動可能
         > javascript 非同期通信
+        
 ![friend](https://user-images.githubusercontent.com/63441901/90575779-24469a80-e1f7-11ea-866c-3128c9d9ee54.gif)
 
 1. iPhone App（swift5）
@@ -41,13 +43,21 @@
     1. 実績の登録
         > json形式でのデータ送信
 
+![iPhone](https://user-images.githubusercontent.com/63441901/90575881-6a9bf980-e1f7-11ea-937e-09092a014823.gif)
+
+
 1. Twittter API
     1.　実績投稿
           > Twitter API
-  
+
+![twitter](https://user-images.githubusercontent.com/63441901/90575902-7c7d9c80-e1f7-11ea-9c9c-08a354219d38.gif)
+
 1. Google API
     1. スプレッドシートへ出力
         > Twitter API
+
+![google](https://user-images.githubusercontent.com/63441901/90575934-915a3000-e1f7-11ea-882c-90a6c10c6ddc.gif)
+
 
 # server
 aws (インスタイプ：t2.micro)
