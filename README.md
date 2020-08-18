@@ -48,15 +48,12 @@
 
 
 1. Twittter API
-
     1.　実績投稿
-          > Twitter API
 
 ![twitter](https://user-images.githubusercontent.com/63441901/90575902-7c7d9c80-e1f7-11ea-9c9c-08a354219d38.gif)
 
 1. Google API
     1. スプレッドシートへ出力
-        > Twitter API
 
 ![google](https://user-images.githubusercontent.com/63441901/90575934-915a3000-e1f7-11ea-882c-90a6c10c6ddc.gif)
 
