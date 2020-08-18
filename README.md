@@ -50,7 +50,6 @@
 1. Twittter API
 
     1.　実績投稿
-    
           > Twitter API
 
 ![twitter](https://user-images.githubusercontent.com/63441901/90575902-7c7d9c80-e1f7-11ea-9c9c-08a354219d38.gif)
