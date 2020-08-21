@@ -59,7 +59,7 @@
 
 
 # server
-aws (インスタイプ：t2.micro)
+aws (インスタンスタイプ：t2.micro)
 
 # DB
 MySQL
